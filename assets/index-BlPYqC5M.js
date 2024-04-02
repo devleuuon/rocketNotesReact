@@ -180,7 +180,7 @@ Error generating stack: `+o.message+`
     flex: 1;
     background: url(${np}) no-repeat center center;
     background-size: cover;
-    `;function Yv(){return T.jsxs(Qv,{children:[T.jsxs(Gv,{children:[T.jsx("h1",{children:"Rocket Notes"}),T.jsx("p",{children:"Aplicação para salvar e gerenciar seus links úteis."}),T.jsx("h2",{children:"Faça seu login"}),T.jsx(wr,{placeholder:"E-mail",type:"text",icon:tp}),T.jsx(wr,{placeholder:"Senha",type:"password",icon:ep}),T.jsx(Jd,{title:"Entrar"}),T.jsx(Zd,{to:"/register",children:"Criar Conta"})]}),T.jsx(Kv,{})]})}const Xv=dt.div`
+    `;function Yv(){return T.jsxs(Qv,{children:[T.jsxs(Gv,{children:[T.jsx("h1",{children:"Rocket Notes"}),T.jsx("p",{children:"Aplicação para salvar e gerenciar seus links úteis."}),T.jsx("h2",{children:"Faça seu login"}),T.jsx(wr,{placeholder:"E-mail",type:"text",icon:tp}),T.jsx(wr,{placeholder:"Senha",type:"password",icon:ep}),T.jsx(Jd,{title:"Entrar"}),T.jsx(Zd,{to:"/rocketnotesreact/register",children:"Criar Conta"})]}),T.jsx(Kv,{})]})}const Xv=dt.div`
     height: 100vh;
     display: flex;
     align-items: stretch;
@@ -217,4 +217,4 @@ Error generating stack: `+o.message+`
     flex: 1;
     background: url(${np}) no-repeat center center;
     background-size: cover;
-    `;function qv(){return T.jsxs(Xv,{children:[T.jsx(Jv,{}),T.jsxs(Zv,{children:[T.jsx("h1",{children:"Rocket Notes"}),T.jsx("p",{children:"Aplicação para salvar e gerenciar seus links úteis."}),T.jsx("h2",{children:"Crie sua conta"}),T.jsx(wr,{placeholder:"Nome",type:"text",icon:Hv}),T.jsx(wr,{placeholder:"E-mail",type:"text",icon:tp}),T.jsx(wr,{placeholder:"Senha",type:"password",icon:ep}),T.jsx(Jd,{title:"Cadastrar"}),T.jsx(Zd,{to:"/",children:"Voltar para o login"})]})]})}function bv(){return T.jsxs(Cv,{children:[T.jsx(vu,{path:"/",element:T.jsx(Yv,{})}),T.jsx(vu,{path:"/register",element:T.jsx(qv,{})})]})}function eg(){return T.jsx(Lv,{children:T.jsx(bv,{})})}pi.createRoot(document.getElementById("root")).render(T.jsx(b.StrictMode,{children:T.jsxs(O0,{theme:I0,children:[T.jsx(T0,{}),T.jsx(eg,{})]})}));
+    `;function qv(){return T.jsxs(Xv,{children:[T.jsx(Jv,{}),T.jsxs(Zv,{children:[T.jsx("h1",{children:"Rocket Notes"}),T.jsx("p",{children:"Aplicação para salvar e gerenciar seus links úteis."}),T.jsx("h2",{children:"Crie sua conta"}),T.jsx(wr,{placeholder:"Nome",type:"text",icon:Hv}),T.jsx(wr,{placeholder:"E-mail",type:"text",icon:tp}),T.jsx(wr,{placeholder:"Senha",type:"password",icon:ep}),T.jsx(Jd,{title:"Cadastrar"}),T.jsx(Zd,{to:"/rocketnotesreact/",children:"Voltar para o login"})]})]})}function bv(){return T.jsxs(Cv,{children:[T.jsx(vu,{path:"/rocketnotesreact/",element:T.jsx(Yv,{})}),T.jsx(vu,{path:"/rocketnotesreact/register",element:T.jsx(qv,{})})]})}function eg(){return T.jsx(Lv,{children:T.jsx(bv,{})})}pi.createRoot(document.getElementById("root")).render(T.jsx(b.StrictMode,{children:T.jsxs(O0,{theme:I0,children:[T.jsx(T0,{}),T.jsx(eg,{})]})}));
