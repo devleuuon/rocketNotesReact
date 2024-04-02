@@ -29,7 +29,7 @@ export function SignIn() {
                 title="Entrar"
                 />
 
-                <Link to="/register">
+                <Link to="/rocketnotesreact/register">
                     Criar Conta
                 </Link>
 

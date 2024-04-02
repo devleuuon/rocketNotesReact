@@ -37,7 +37,7 @@ export function SignUp() {
                 title="Cadastrar"
                 />
 
-                <Link to="/">
+                <Link to="/rocketnotesreact/">
                     Voltar para o login
                 </Link>
 
