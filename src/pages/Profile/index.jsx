@@ -8,7 +8,7 @@ export function Profile() {
     return(
         <Container>
             <header>
-                <Link to="/">
+                <Link to="/rocketnotesreact/">
                 <FiArrowLeft />
                 </Link>
             </header>

@@ -40,7 +40,7 @@ export function Home() {
             </Section>
         </Content>
 
-        <NewNote to='/new'>
+        <NewNote to='/rocketnotesreact/new'>
             <FiPlus />
             Criar Nota
         </NewNote>

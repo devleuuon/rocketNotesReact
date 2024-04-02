@@ -4,7 +4,7 @@ import { Container, Profile, Logout } from "./styles";
 export function Header() {
     return (
         <Container>
-            <Profile to='/profile'>
+            <Profile to='/rocketnotesreact/profile'>
                 <img src="https://github.com/devleuuon.png" alt="imagem de lennon"/>
 
                 <div>

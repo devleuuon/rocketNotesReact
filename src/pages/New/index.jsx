@@ -16,7 +16,7 @@ export function New() {
                 <Form>
                     <header>
                         <h1>Criar nota</h1>
-                        <Link to="/home">Voltar</Link>
+                        <Link to="/rocketnotesreact/home">Voltar</Link>
                     </header>
 
                     <Input placeholder="Título"/>
