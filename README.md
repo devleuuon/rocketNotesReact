@@ -20,6 +20,8 @@ Projeto promovido pela rocketseat para ensino de tecnologias WEB.
   <img alt="imagem do projeto" src="./src/assets/readme.png" width="100%">
 </p>
 
+[🔗 Clique aqui para acessar](https://devleuuon.github.io/rocketnotesreact/)
+
 ## 🚀 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
