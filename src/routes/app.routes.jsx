@@ -8,10 +8,10 @@ import { Profile } from '../pages/Profile'
 export function AppRoutes() {
     return(
         <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/new' element={<New />} />
-            <Route path='/details/:id' element={<Details />} />
-            <Route path='/Profile' element={<Profile />} />
+            <Route path='/rocketnotesreact/' element={<Home />} />
+            <Route path='/rocketnotesreact/new' element={<New />} />
+            <Route path='/rocketnotesreact/details/:id' element={<Details />} />
+            <Route path='/rocketnotesreact/Profile' element={<Profile />} />
         </Routes>
     )
 }
