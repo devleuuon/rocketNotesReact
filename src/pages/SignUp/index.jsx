@@ -1,6 +1,6 @@
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FiMail ,FiLock, FiUser} from 'react-icons/fi'
 import { Container, Form, Background } from "./styles"
 import { useState } from 'react'
@@ -11,6 +11,10 @@ export function SignUp() {
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
 
+    const navigate = useNavigate() // se o usuário for cadastrado vai navegar para a página de login.
+
+    
+
     function handleSignUp() {
         if (!name || !email || !password) {
             return alert('Preencha todos os campos!')
@@ -19,6 +23,7 @@ export function SignUp() {
         api.post('/users', { name, email, password}) //vai criar usuário lá no banco de dados.
         .then(() => { //se der certo vai exibir esse alerta.
             alert('Usuário cadastrado com sucesso!')
+            navigate('/rocketnotesreact/')
         })
         .catch(error => {
             if(error.response) {
