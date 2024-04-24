@@ -4,10 +4,17 @@ import { FiMail ,FiLock} from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { Container, Form, Background } from "./styles"
 import { useAuth } from '../../hooks/auth'
+import { useState } from 'react'
 
 export function SignIn() {
-    const data = useAuth()
-    console.log('meu conteúdo ->', data);
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const { signIn } = useAuth()
+
+    function handleSignIn(){
+        signIn({ email, password })
+    }
 
     return(
         <Container>
@@ -21,16 +28,18 @@ export function SignIn() {
                     placeholder="E-mail"
                     type="text"
                     icon={FiMail}
+                    onChange={e => setEmail(e.target.value)} //useState
                 />
 
                 <Input
                     placeholder="Senha"
                     type="password"
                     icon={FiLock}
+                    onChange={e => setPassword(e.target.value)} //useState
                 />
 
                 <Button 
-                title="Entrar"
+                title="Entrar" onClick={handleSignIn}
                 />
 
                 <Link to="/rocketnotesreact/register">
