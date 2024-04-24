@@ -3,8 +3,13 @@ import { Button } from '../../components/Button'
 import { FiMail ,FiLock} from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { Container, Form, Background } from "./styles"
+import { useContext } from 'react' //para usar o contexto
+import { MyContext } from '../../myContext'
 
 export function SignIn() {
+
+    const data = useContext(MyContext)
+    console.log('Meu contexto ->', data);
     return(
         <Container>
             <Form>
