@@ -26,6 +26,13 @@ function AuthProvider({ children }) {
         }
     }
 
+    function signOut() {
+        localStorage.removeItem('@rocketnotes:token')
+        localStorage.removeItem('@rocketnotes:user')
+
+        setData({}) //vai retornar vazio e voltar para tela de autenticação.
+    }
+
     useEffect(() => {
         const token = localStorage.getItem('@rocketnotes:token')
         const user = localStorage.getItem('@rocketnotes:user')
@@ -42,7 +49,7 @@ function AuthProvider({ children }) {
 
 
     return(
-        <AuthContext.Provider value={ { signIn, user: data.user } }>
+        <AuthContext.Provider value={ { signIn, user: data.user, signOut } }>
             { children }
         </AuthContext.Provider> //todas as rotas da aplicação serão passadas para o children. será resposável por trabalhar com o auth.routes e app.routes, que antes tinha que ser passados manualmente.
     )
