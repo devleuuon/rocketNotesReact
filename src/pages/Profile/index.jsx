@@ -7,11 +7,21 @@ import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
 
 export function Profile() {
-    const { user } = useAuth();  //vai passar o estado atualizado do usuário autenticado para os campos abaixo.
+    const { user, updateProfile } = useAuth();  //vai passar o estado atualizado do usuário autenticado para os campos abaixo.
     const [name, setName] = useState(user.name); //tem que passar o 'value' no input.
     const [email, setEmail] = useState(user.email);
     const [passwordOld, setPasswordOld] = useState();
     const [passwordNew, setPasswordNew] = useState();
+
+    async function handleUpdate() { //vai ser passado no botão de enviar.
+        const user = {
+            name,
+            email,
+            password: passwordNew,
+            old_password: passwordOld
+        }
+        await updateProfile({ user })
+    }
 
 
     return(
@@ -59,12 +69,12 @@ export function Profile() {
 
                 <Input 
                 placeholder="Nova senha"
-                type="text"
+                type="password"
                 icon={FiLock}
                 onChange={e => setPasswordNew(e.target.value)}
                 />
 
-                <Button title="Salvar" />
+                <Button title="Salvar" onClick={handleUpdate} />
 
             </Form>
         </Container>

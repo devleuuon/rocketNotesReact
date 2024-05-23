@@ -33,6 +33,24 @@ function AuthProvider({ children }) {
         setData({}) //vai retornar vazio e voltar para tela de autenticação.
     }
 
+    async function updateProfile({ user }) {
+        try {
+
+            await api.put('/users', user)
+            localStorage.setItem('@rocketnotes:user', JSON.stringify(user)) //vai atualizar o nome.
+
+            setData({ user, token: data.token })
+            alert('perfil atualizado!')
+
+        } catch (error) {
+            if(error.response) {
+                alert(error.response.data.message)
+            } else {
+                alert('Não foi possível atualizar o perfil!')
+            }
+        }
+    }
+
     useEffect(() => {
         const token = localStorage.getItem('@rocketnotes:token')
         const user = localStorage.getItem('@rocketnotes:user')
@@ -49,7 +67,13 @@ function AuthProvider({ children }) {
 
 
     return(
-        <AuthContext.Provider value={ { signIn, user: data.user, signOut } }>
+        <AuthContext.Provider value={ { 
+            signIn, 
+            user: data.user, 
+            signOut,
+            updateProfile 
+            } }
+            >
             { children }
         </AuthContext.Provider> //todas as rotas da aplicação serão passadas para o children. será resposável por trabalhar com o auth.routes e app.routes, que antes tinha que ser passados manualmente.
     )
