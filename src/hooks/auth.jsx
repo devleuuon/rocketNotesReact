@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 
+
 export const AuthContext = createContext({})
 
 function AuthProvider({ children }) {
@@ -33,8 +34,16 @@ function AuthProvider({ children }) {
         setData({}) //vai retornar vazio e voltar para tela de autenticação.
     }
 
-    async function updateProfile({ user }) {
+    async function updateProfile({ user, avatarFile }) {
         try {
+
+            if(avatarFile) {
+                const fileUploadForm = new FormData()
+                fileUploadForm.append('avatar', avatarFile)
+
+                const response = await api.patch('/users/avatar', fileUploadForm)
+                user.avatar = response.data.avatar
+            }
 
             await api.put('/users', user)
             localStorage.setItem('@rocketnotes:user', JSON.stringify(user)) //vai atualizar o nome.

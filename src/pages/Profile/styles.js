@@ -36,7 +36,7 @@ export const Avatar = styled.div`
     > img {
     width: 18.6rem;
     /* height: 18.6rem; */
-    /* border-radius: 50%; */
+    border-radius: 50%;
     }
 
     > label {
