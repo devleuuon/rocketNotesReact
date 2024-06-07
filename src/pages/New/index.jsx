@@ -12,13 +12,37 @@ export function New() {
     const [links, setLinks] = useState([])
     const [newLink, setNewLink] = useState("")
 
+    const [tags, setTags] = useState([])
+    const [newTag, setNewTag] = useState("")
+
     function handleAddLink(){
-        setLinks(prevState => [...prevState, newLink]) //vai pegar os links anteriores e add um novo link no array vazio.
+
+        if(!newLink) {
+            alert('Digite um link!')
+        } else {
+            setLinks(prevState => [...prevState, newLink]) //vai pegar os links anteriores e add um novo link no array vazio.
+        }
         setNewLink("") // vai limpar o estado, para poder add outros.
     }
 
     function handleRemoveLink(deleted) {
-        setLinks(prevState => prevState.filter(link => link !== deleted))
+        setLinks(prevState => prevState.filter((link, index) => index !== deleted)) //vai filtrar o link desejado para remoção, index vai pegar o lugar que está, não permitindo remoções de uma mesma palavra juntas.
+    }
+
+    function handleAddTag(){
+
+        if(!newTag) {
+            alert('Digite uma tag!')
+        } else {
+            setTags(prevState => [...prevState, newTag]) //vai pegar os links anteriores e add um novo link no array vazio.
+        }
+        setNewTag("")
+
+    }
+
+    function handleRemoveTag(deleted) {
+        setTags(prevState => prevState.filter((tag, index) => index !== deleted)) //vai filtrar o link desejado para remoção, index vai pegar o lugar que está, não permitindo remoções de uma mesma palavra juntas.
+
     }
 
     return(
@@ -42,7 +66,7 @@ export function New() {
                             <NoteItem
                             key={String(index)} 
                             value={link}
-                            onClick={() => handleRemoveLink(link)}
+                            onClick={() => handleRemoveLink(index)}
                             />
                         ))
                     }
@@ -58,8 +82,23 @@ export function New() {
                     <Section title="Marcadores" />
 
                     <div className="tags">
-                    <NoteItem placeholder="Https://rocketseat.com.br"/>
-                    <NoteItem isNew placeholder="Novo Link"/>
+                        {
+                            tags.map((tag, index) => (
+                            <NoteItem 
+                            key={String(index)}
+                            value={tag}
+                            onClick={() => {handleRemoveTag(index)}}
+                            />
+                            ))
+                        }
+
+                    <NoteItem 
+                    isNew 
+                    placeholder="Novo Link"
+                    onChange={e => setNewTag(e.target.value)}
+                    value={newTag}
+                    onClick={handleAddTag}
+                    />
                     </div>
 
                     <Button title="Salvar" />
