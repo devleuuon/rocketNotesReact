@@ -7,13 +7,20 @@ import { Section } from '../../components/Section'
 import { Button } from '../../components/Button'
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { api } from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 export function New() {
+    const [title, setTitle] = useState("")
+    const [description, setDescription] = useState("")
+
     const [links, setLinks] = useState([])
     const [newLink, setNewLink] = useState("")
 
     const [tags, setTags] = useState([])
     const [newTag, setNewTag] = useState("")
+
+    const navigate = useNavigate()
 
     function handleAddLink(){
 
@@ -45,6 +52,18 @@ export function New() {
 
     }
 
+    async function handleNewNote() {
+        await api.post('/notes', {
+            title,
+            description,
+            tags,
+            links
+        })
+
+        alert('Nota criada com sucesso!')
+        navigate('/rocketnotesreact/')
+    }
+
     return(
         <Container>
             <Header />
@@ -56,9 +75,15 @@ export function New() {
                         <Link to="/rocketnotesreact/home">Voltar</Link>
                     </header>
 
-                    <Input placeholder="Título"/>
+                    <Input 
+                    placeholder="Título"
+                    onChange={e => setTitle(e.target.value)}
+                    />
 
-                    <Textarea placeholder="Observações" />
+                    <Textarea 
+                    placeholder="Observações" 
+                    onChange={e => setDescription(e.target.value)}
+                    />
 
                     <Section title="Links Úteis">
                     {
@@ -101,7 +126,10 @@ export function New() {
                     />
                     </div>
 
-                    <Button title="Salvar" />
+                    <Button 
+                    title="Salvar" 
+                    onClick={handleNewNote}
+                    />
 
                 </Form>
             </main>
