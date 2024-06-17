@@ -7,6 +7,7 @@ export const Container = styled.button`
     border: none;
     border-radius: 1.0rem;
     padding: 1.6rem 2.2rem;
+    margin-bottom: 2rem;
 
     > h1 {
         text-align: left;

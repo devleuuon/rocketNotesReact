@@ -9,6 +9,8 @@ import { useEffect, useState } from 'react'
 import { api } from '../../services/api'
 
 export function Home() {
+    const [search, setSearch] = useState('')
+    const [notes, setNotes] = useState([])
     const [tags, setTags] = useState([])
     const [tagsSelected, setTagsSelected] = useState([])
 
@@ -32,6 +34,15 @@ export function Home() {
 
         fetchTags()
     },[])
+
+    useEffect(() => {
+        async function fetchNotes() {
+            const response = await api.get(`/notes?title=${search}&tags=${tagsSelected}`)
+            setNotes(response.data)
+        }
+        fetchNotes()
+
+    }, [tagsSelected, search]) //useeffect com parametro vai ser executado sempre que alterarem o estado. diferente do vazio que só é executado uma vez
 
     return(
         <Container>
@@ -64,19 +75,22 @@ export function Home() {
         </Menu>
 
         <Search>
-            <Input placeholder="Pesquisar pelo título" icon={FiSearch} />
+            <Input placeholder="Pesquisar pelo título" icon={FiSearch} 
+            onChange={() => setSearch(e.target.value)}
+            />
         </Search>
 
         <Content>
             <Section title="Minhas Notas">
-                <Note data={{
-                    title: 'React',
-                    tags: [
-                        {id: 1, name: 'React'},
-                        {id: 2, name: 'Rocketseat'}
-                    ]
-                }} 
-                />
+                {
+                    notes.map(note => (
+
+                        <Note 
+                        key={String(note.id)}
+                        data={note} 
+                        />
+                ))
+            }
             </Section>
         </Content>
 
