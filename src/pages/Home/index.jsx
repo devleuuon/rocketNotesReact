@@ -15,6 +15,11 @@ export function Home() {
     const [tagsSelected, setTagsSelected] = useState([])
 
     function handleTagSelected(tagName) {
+        if(tagName === 'all'){ //pra clicar na opção 'todos' e ser redirecionado.
+            return setTagsSelected([])
+        }
+
+
         const alreadySelected = tagsSelected.includes(tagName) //vai ver se existe a tag e vai retornar com verdadeiro ou falso.
 
         if (alreadySelected) {
