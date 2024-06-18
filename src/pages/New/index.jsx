@@ -98,7 +98,7 @@ export function New() {
                     onChange={e => setDescription(e.target.value)}
                     />
 
-                    <Section title="Links Úteis">
+                    <Section title="Links Úteis (usar https)">
                     {
                         links.map((link, index) =>(
                             <NoteItem
@@ -110,7 +110,7 @@ export function New() {
                     }
                     <NoteItem 
                     isNew
-                    placeholder="Novo Link"
+                    placeholder="Ex: https://github.com/devleuuon"
                     value={newLink}
                     onChange={e => setNewLink(e.target.value)}
                     onClick={handleAddLink}
@@ -132,7 +132,7 @@ export function New() {
 
                     <NoteItem 
                     isNew 
-                    placeholder="Novo Link"
+                    placeholder="Nova Tag"
                     onChange={e => setNewTag(e.target.value)}
                     value={newTag}
                     onClick={handleAddTag}

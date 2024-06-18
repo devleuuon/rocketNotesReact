@@ -7,12 +7,15 @@ import { Section } from '../../components/Section'
 import { Note } from '../../components/Note'
 import { useEffect, useState } from 'react'
 import { api } from '../../services/api'
+import { useNavigate } from 'react-router-dom'
 
 export function Home() {
     const [search, setSearch] = useState('')
     const [notes, setNotes] = useState([])
     const [tags, setTags] = useState([])
     const [tagsSelected, setTagsSelected] = useState([])
+
+    const navigate = useNavigate()
 
     function handleTagSelected(tagName) {
         if(tagName === 'all'){ //pra clicar na opção 'todos' e ser redirecionado.
@@ -29,6 +32,10 @@ export function Home() {
             setTagsSelected(prevState => [...prevState, tagName])
         }
 
+    }
+
+    function handleDetails(id){
+        navigate(`/rocketnotesreact/details/${id}`)
     }
 
     useEffect(() => {
@@ -81,7 +88,7 @@ export function Home() {
 
         <Search>
             <Input placeholder="Pesquisar pelo título" icon={FiSearch} 
-            onChange={() => setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
             />
         </Search>
 
@@ -92,7 +99,8 @@ export function Home() {
 
                         <Note 
                         key={String(note.id)}
-                        data={note} 
+                        data={note}
+                        onClick={() => handleDetails(note.id)}
                         />
                 ))
             }
