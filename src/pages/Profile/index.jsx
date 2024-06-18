@@ -2,10 +2,10 @@ import { Container, Form, Avatar } from "./styles";
 import { Input } from '../../components/Input'
 import { FiArrowLeft, FiUser, FiLock, FiMail, FiCamera } from 'react-icons/fi'
 import { Button } from '../../components/Button'
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
 import { api } from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 import avatarPlaceHolder from '../../assets/avatar_placeholder.svg'
 
@@ -15,6 +15,8 @@ export function Profile() {
     const [email, setEmail] = useState(user.email);
     const [passwordOld, setPasswordOld] = useState();
     const [passwordNew, setPasswordNew] = useState();
+
+    const navigate = useNavigate()
 
     const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceHolder
 
@@ -39,13 +41,17 @@ export function Profile() {
         setAvatar(imagePreview)
     }
 
+    function handleBack(){
+        navigate(-1)
+    }
+
 
     return(
         <Container>
             <header>
-                <Link to="/rocketnotesreact/">
+                <button id="button-none" type="button" onClick={handleBack}>
                 <FiArrowLeft />
-                </Link>
+                </button>
             </header>
 
             <Form>

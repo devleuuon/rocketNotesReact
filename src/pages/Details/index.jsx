@@ -16,7 +16,7 @@ export function Details() {
     const navigate = useNavigate()
 
     function handleBack(){
-        navigate("/rocketnotesreact/")
+        navigate(-1)
     }
 
     async function handleRemove() {
