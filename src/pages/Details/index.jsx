@@ -19,6 +19,16 @@ export function Details() {
         navigate("/rocketnotesreact/")
     }
 
+    async function handleRemove() {
+        const confirm = window.confirm('Deseja realmente remover a nota?')
+
+        if(confirm) {
+            await api.delete(`/notes/${params.id}`)
+            alert('Nota removida com sucesso!')
+            navigate("/rocketnotesreact/")
+        }
+    }
+
     useEffect(() => {
         async function fetchNote(){
             const response = await api.get(`/notes/${params.id}`)
@@ -35,7 +45,11 @@ return (
     <main>
         
         <Content>
-    <ButtonText isActive title="Excluir nota"/>
+    <ButtonText 
+    isActive 
+    title="Excluir nota"
+    onClick={handleRemove}
+    />
 
     <h1>
         {data.title}
