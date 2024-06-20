@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 import { New } from '../pages/New'
 import { Home } from '../pages/Home'
@@ -12,6 +12,8 @@ export function AppRoutes() {
             <Route path='/rocketnotesreact/new' element={<New />} />
             <Route path='/rocketnotesreact/details/:id' element={<Details />} />
             <Route path='/rocketnotesreact/Profile' element={<Profile />} />
-        </Routes>
+
+            <Route path='*' element={<Navigate to='/rocketnotesreact/'/>} />
+        </Routes> //se usuario tiver logado e digitar url que não existe, vai voltar para a página home.
     )
 }
