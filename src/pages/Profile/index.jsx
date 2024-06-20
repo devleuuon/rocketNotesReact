@@ -24,13 +24,16 @@ export function Profile() {
     const [avatarFile, setAvatarFile] = useState(null)
 
     async function handleUpdate() { //vai ser passado no botão de enviar.
-        const user = {
+        const updated = {
             name,
             email,
             password: passwordNew,
             old_password: passwordOld
         }
-        await updateProfile({ user, avatarFile })
+
+        const userUpdated = Object.assign(user, updated);
+
+        await updateProfile({ user, avatarFile, userUpdated })
     }
 
     function handleChangeAvatar(event) {
